@@ -3,6 +3,8 @@
 lnb/
 # Ignore the workspace settings
 zsh.code-workspace
+.vscode
+.github
 # Ignore any environment files
 *.env*
 # Ignore backup files
