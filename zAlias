@@ -14,28 +14,54 @@ alias ll='ls -Ahn '
 alias lr='ls -R '
 alias llr='ls -lhR'
 alias lra='ls -RA '
+
 alias dps='docker ps'
 alias x='exit'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+
 alias apt='sudo apt'
 alias apt-get='sudo apt get'
+
 alias nv='nvim'
+
 alias dps='docker ps'
 alias dr='docker run '
 alias dcu='docker compose up'
+
 alias zcon='nvim ${HOME}/.config/zsh/'
-alias cdz='cd ${HOME}/.config/zsh'
-alias android-studio="/usr/share/android-studio/bin/studio.sh"
-alias psec='docker run --rm -ti --network host -v $PWD/work:/work parrotsec/security:latest zsh'
+alias za='nvim $ZDOTDIR/zalias'
+alias za='nvim $ZDOTDIR/zenv'
+alias za='nvim $ZDOTDIR/zfunc'
+alias za='nvim $ZDOTDIR/zpath'
+alias za='nvim $ZDOTDIR/setup.sh'
+alias zd='cd $ZDOTDIR/'
+
+# alias android-studio="/usr/share/android-studio/bin/studio.sh"
+# alias psec='docker run --rm -ti --network host -v $PWD/work:/
+# work parrotsec/security:latest zsh'
+
 alias myip='curl ifconfig.me'
 alias dist='cat /etc/*-release/'
+
 alias reload='source ${ZDOTDIR}/.zshrc'
+
 alias zc='nvim ${ZDOTDIR}/.zshrc'
+
 alias simp='python -m http.server 8000'
 alias zd='cd $ZDOTDIR'
+
+alias pi='pip install '
+alias pu='pip install -U'
+alias pip='python3 -m pip '
+alias venv=
+
+alias sr='streamlit run '
+
+
 
 # Global Aliases
 

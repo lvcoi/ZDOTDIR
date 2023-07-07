@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
- set_zdot_directory() {
-  # Check if the script is running in Zsh shell
+ 
+check_depends() {
+     # Check if the script is running in Zsh shell
   if [ ! -z "$ZSH_VERSION" ]; then
     echo "Error: This script requires Zsh shell to run." >&2
     exit 1
@@ -10,23 +11,24 @@
     echo "Error: realpath command not found. Please install it and try again." >&2
     exit 1
   fi
-   # Get the absolute path of the specified directory
-  local ZDOTDIR="$(realpath -s "$1")"
-   # Check if the specified directory is under the home directory
+}
+set_zdot_directory() {
+  # Get the absolute path of the specified directory
+  ZDOTDIR="$(realpath -s "$1")"
+  # Check if the specified directory is under the home directory
   if [[ "${ZDOTDIR}" != "${HOME}/"* ]]; then
     echo "Error: Invalid directory specified. Please specify a directory under your home directory." >&2
     exit 1
   fi
-   # Create the specified directory if it does not exist
+    # Create the specified directory if it does not exist
   if [ ! -d "${ZDOTDIR}" ]; then
     if ! mkdir -p "${ZDOTDIR}"; then
       echo "Error: Failed to create directory ${ZDOTDIR}." >&2
       exit 1
     fi
   fi
-   # Backup the existing .zshrc file and create a symlink to the new .zshrc file
-  backup_and_symlink_zshrc_config_file "${ZDOTDIR}/.zshrc"
-  printf "ZSH configuration directory set to %s." "$ZDOTDIR"
+  # Backup the existing .zshrc file and create a symlink to the new .zshrc file
+printf "ZSH configuration directory set to %s." "$ZDOTDIR"
 }
 backup_and_symlink_zshrc_config_file() {
   local -r zshrc_config_file="$1"
@@ -46,4 +48,7 @@ backup_and_symlink_zshrc_config_file() {
   fi
 }
  # Call the set_ZDOTDIRectory function with the specified directory
-set_zdot_directory "${HOME}/.config/zsh/"
+check_depends
+set_zdot_directory ZDOTDIR='$(realpath -s "$1")'
+backup_and_symlink_zshrc_config_file "${ZDOTDIR}/.zshrc"
+

@@ -18,9 +18,23 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory histignorealldups autocd
-ZDOTDIR=
+ZDOTDIR="${HOME}/.config/zfiles/"
 
 
+zsh_autolibs() {
+  zlibs=(
+    "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    "/usr/share/zsh-syntax-highlighting/"
+    "/user/share/zsh-autocompletion/"
+  )
+   if [[ -d $zlibs ]]; then
+    for zlib in "${zlibs[@]}"; do
+      source "$zlib"
+    done
+  fi
+}
+
+zsh_autolibs
 
 
 : <<'COMMENT'
